@@ -1,66 +1,18 @@
-/* General styling */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f9f4;
-    color: #333;
-    margin: 0;
-    padding: 0;
+/* Watermark styling */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
 }
 
-header {
-    background-color: green;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-
-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-}
-
-.login-container {
-    width: 300px;
-    text-align: center;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-}
-
-button {
-    width: 100%;
-    padding: 12px;
-    background-color: green;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: darkgreen;
-}
-
-.admin-login {
-    margin-top: 20px;
-}
-
-.admin-login button {
-    background-color: blue;
-    margin-top: 10px;
-}
-
-.admin-login button:hover {
-    background-color: darkblue;
+/* Optional: Adding a little styling for the text */
+footer p {
+  margin: 0;
 }
