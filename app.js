@@ -1,39 +1,33 @@
-import { db, auth } from './firebase.js';
+// app.js
+import { db } from './firebase.js';
 import { collection, addDoc } from 'firebase/firestore';
 
-// Student login functionality
-document.getElementById("student-form").addEventListener("submit", async (e) => {
-    e.preventDefault();
+// Select the student form
+const studentForm = document.getElementById('student-form');
 
-    const fullName = document.getElementById("full-name").value;
-    const grade = document.getElementById("grade").value;
-    const section = document.getElementById("section").value;
+// Handle form submission
+studentForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
 
-    try {
-        // Store student data in Firestore
-        const docRef = await addDoc(collection(db, "students"), {
-            fullName: fullName,
-            grade: grade,
-            section: section,
-            borrowedBooks: []
-        });
+  // Get the input values
+  const name = document.getElementById('name').value;
+  const grade = document.getElementById('grade').value;
+  const section = document.getElementById('section').value;
+  const borrowedBook = document.getElementById('borrowed-book').value;
 
-        alert("Student logged in successfully!");
-        window.location.href = "book-selection.html";  // Redirect to book selection page
-
-    } catch (error) {
-        console.error("Error adding document: ", error);
-    }
-});
-
-// Admin button click handler
-document.getElementById("admin-button").addEventListener("click", () => {
-    const email = prompt("Enter admin email:");
-    const password = prompt("Enter admin password:");
-
-    if (email === "Lrcevnhs@gmail.com" && password === "LrcAdminStaff@evnhs") {
-        window.location.href = "admin-dashboard.html";  // Redirect to admin dashboard
-    } else {
-        alert("Invalid credentials!");
-    }
+  // Save the data to Firestore
+  try {
+    await addDoc(collection(db, 'students'), {
+      name: name,
+      grade: grade,
+      section: section,
+      borrowedBook: borrowedBook,
+      timestamp: new Date()
+    });
+    alert('Student data saved successfully!');
+    // Clear the form after submission
+    studentForm.reset();
+  } catch (e) {
+    console.error('Error adding document: ', e);
+  }
 });
