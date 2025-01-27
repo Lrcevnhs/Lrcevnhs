@@ -1,6 +1,32 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Equitable Village National High School</title>
   <link rel="stylesheet" href="style.css">
 </head>
+<body>
+  <h1>Welcome to Equitable Village National High School Library</h1>
+
+  <form id="student-form">
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" required>
+    <label for="grade">Grade:</label>
+    <input type="text" id="grade" required>
+    <label for="section">Section:</label>
+    <input type="text" id="section" required>
+    <label for="borrowed-book">Borrowed Book:</label>
+    <input type="text" id="borrowed-book" required>
+    <button type="submit">Save Information</button>
+  </form>
+
+  <footer>
+    <p>LRC - Library Resource Center</p>
+  </footer>
+
+  <script src="firebase.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
