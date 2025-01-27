@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management - Equitable Village National Highschool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Equitable Village National Highschool Library</h1>
+    </header>
+
+    <main>
+        <div class="login-container">
+            <!-- Student Login -->
+            <div class="student-login">
+                <h2>Student Login</h2>
+                <form id="student-form">
+                    <input type="text" id="full-name" placeholder="Full Name" required>
+                    <input type="text" id="grade" placeholder="Grade" required>
+                    <input type="text" id="section" placeholder="Section" required>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+
+            <!-- Admin Access -->
+            <div class="admin-login">
+                <h2>Admin Access</h2>
+                <button id="admin-button">Are you an admin? Click here</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="firebase.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
