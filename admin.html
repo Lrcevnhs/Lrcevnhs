@@ -10,12 +10,13 @@
 <body>
 
   <header>
-    <h1>Library Admin Panel</h1>
+    <img src="imgss.png" alt="Library Logo" class="logo">
+    <h1>Admin Panel - Library Management</h1>
   </header>
 
-  <main id="admin-login-section">
-    <h2>Admin Login</h2>
+  <main>
     <form id="admin-login-form">
+      <h2>Admin Login</h2>
       <label for="admin-email">Email:</label>
       <input type="email" id="admin-email" required>
 
@@ -24,43 +25,41 @@
 
       <button type="submit">Login</button>
     </form>
+
+    <div id="admin-dashboard" style="display: none;">
+      <h2>Manage Books</h2>
+      <form id="add-book-form">
+        <label for="book-name">Book Name:</label>
+        <input type="text" id="book-name" required>
+
+        <label for="author-name">Author:</label>
+        <input type="text" id="author-name" required>
+
+        <label for="book-genre">Genre:</label>
+        <input type="text" id="book-genre" required>
+
+        <button type="submit">Add Book</button>
+      </form>
+
+      <h2>Borrowed Books</h2>
+      <table id="borrowed-books-table">
+        <thead>
+          <tr>
+            <th>Student Name</th>
+            <th>Grade</th>
+            <th>Section</th>
+            <th>Book Title</th>
+            <th>Date Borrowed</th>
+            <th>Return Status</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
   </main>
 
-  <section id="admin-dashboard" style="display: none;">
-    <h2>Manage Books</h2>
-    <form id="add-book-form">
-      <label for="book-name">Book Name:</label>
-      <input type="text" id="book-name" required>
-
-      <label for="book-author">Author:</label>
-      <input type="text" id="book-author" required>
-
-      <label for="book-genre">Genre:</label>
-      <input type="text" id="book-genre" required>
-
-      <button type="submit">Add Book</button>
-    </form>
-
-    <h3>Book List</h3>
-    <ul id="book-list"></ul>
-
-    <h2>Borrowed Books</h2>
-    <table id="borrowed-books-table">
-      <thead>
-        <tr>
-          <th>Student Name</th>
-          <th>Grade & Section</th>
-          <th>Book Title</th>
-          <th>Date Borrowed</th>
-          <th>Return Status</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </section>
-
   <footer>
-    <p><strong>Library Management System - Admin Panel</strong></p>
+    <p><strong>Library Admin Panel</strong></p>
   </footer>
 
 </body>
