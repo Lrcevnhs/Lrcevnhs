@@ -58,7 +58,7 @@ label {
   margin-bottom: 5px;
 }
 
-input, select, button {
+input, select {
   width: calc(100% - 20px);
   padding: 12px;
   margin: 8px 10px;
@@ -68,13 +68,16 @@ input, select, button {
 }
 
 button {
+  width: 100%;
   background: green;
   color: white;
   border: none;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
-  text-align: center;
+  padding: 12px;
+  border-radius: 5px;
+  margin-top: 10px;
 }
 
 button:hover {
