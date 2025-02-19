@@ -10,18 +10,18 @@
 <body>
 
   <header>
-    <h1>Equitable Village National High School</h1>
+    <h1>Sign Here.</h1>
     <img src="imgss.png" alt="School Logo" class="logo">
   </header>
 
   <main>
-    <h2>Sign in your name here.</h2>
+    <h2>Enter Your Information Below.</h2>
     <form id="student-form">
       <label for="student-name">Full Name (Surname, First Name, Middle Name):</label>
       <input type="text" id="student-name" required>
 
       <label for="student-grade">Grade Level:</label>
-      <select id="student-grade">
+      <select id="student-grade" required>
         <option value="" disabled selected>Select Grade</option>
         <option value="7">Grade 7</option>
         <option value="8">Grade 8</option>
@@ -30,7 +30,7 @@
       </select>
 
       <label for="student-section">Section:</label>
-      <input type="text" id="student-section" required>
+      <input type="text" id="student-section" placeholder="Enter Your Section" required>
 
       <label for="book-title">Select a Book:</label>
       <select id="book-title"></select>
