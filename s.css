@@ -2,49 +2,55 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(to bottom, #a8e6a3, #2d572c);
-  color: #333;
+  background: linear-gradient(to bottom, lightgreen, darkgreen);
+  color: white;
+  text-align: center;
 }
 
 header {
-  background-color: #2d572c;
-  color: white;
+  background: rgba(0, 100, 0, 0.8);
+  padding: 20px;
   text-align: center;
-  padding: 20px 0;
+  font-size: 24px;
 }
 
 h1 {
-  font-size: 28px;
   margin: 0;
+  font-size: 32px;
+  font-weight: bold;
 }
 
 .lrc-title {
-  font-size: 22px;
+  margin-top: 10px;
+  font-size: 20px;
   font-weight: bold;
-  margin: 5px 0 0;
 }
 
 main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
-  text-align: center;
 }
 
 form {
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
   padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   max-width: 400px;
-  margin: 20px auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  color: black;
+  text-align: left;
 }
 
 label {
   display: block;
+  margin-bottom: 5px;
   font-weight: bold;
-  margin: 10px 0 5px;
 }
 
-input, select {
+input, select, button {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
@@ -53,34 +59,37 @@ input, select {
 }
 
 button {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #2d572c;
+  background: green;
   color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
   font-weight: bold;
 }
 
 button:hover {
-  background-color: #1a3b1e;
+  background: darkgreen;
 }
 
 .admin-btn {
-  background-color: #4a8c4a;
-  margin-top: 10px;
+  background: #ffcc00;
+  color: black;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 15px;
+  width: 200px;
 }
 
 .admin-btn:hover {
-  background-color: #376b37;
+  background: #e6b800;
 }
 
 footer {
-  background: #1a3b1e;
+  background: rgba(0, 50, 0, 0.8);
   color: white;
-  text-align: center;
   padding: 10px;
-  margin-top: 20px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
