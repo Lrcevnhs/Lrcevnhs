@@ -10,7 +10,7 @@
 <body>
 
   <header>
-    <h1>Welcome to Equitable Village National High School</h1>
+    <h1>Welcome to <br> Equitable Village National High School</h1>
     <h2 class="lrc-title">LRC - Library Resource Center</h2>
   </header>
 
@@ -20,8 +20,17 @@
       <label for="student-name">Full Name:</label>
       <input type="text" id="student-name" required>
       
-      <label for="student-grade">Grade & Section:</label>
-      <input type="text" id="student-grade" required>
+      <label for="student-grade">Grade:</label>
+      <select id="student-grade" required>
+        <option value="" disabled selected>Select Grade</option>
+        <option value="7">Grade 7</option>
+        <option value="8">Grade 8</option>
+        <option value="9">Grade 9</option>
+        <option value="10">Grade 10</option>
+      </select>
+
+      <label for="student-section">Section:</label>
+      <input type="text" id="student-section" required placeholder="Enter your section">
 
       <label for="book-title">Select a Book:</label>
       <select id="book-title">
