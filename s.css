@@ -7,23 +7,31 @@ body {
 }
 
 header {
-  background: green;
-  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, green, darkgreen);
   padding: 20px;
   text-align: center;
 }
 
 .logo {
-  width: 100px;
-  height: auto;
+  width: 60px;
+  height: 60px;
+  margin-right: 15px;
 }
 
-h1, h2 {
-  margin: 10px 0;
+h1 {
+  font-size: 24px;
+  color: white;
+  margin: 0;
+  display: flex;
+  align-items: center;
 }
 
-main {
-  padding: 20px;
+h2 {
+  margin-top: 20px;
+  color: darkgreen;
 }
 
 form {
@@ -50,7 +58,7 @@ input, select {
 }
 
 button {
-  background: green;
+  background: darkgreen;
   color: white;
   padding: 10px;
   border: none;
@@ -61,7 +69,12 @@ button {
 }
 
 button:hover {
-  background: darkgreen;
+  background: green;
+}
+
+.admin-btn {
+  margin-top: 20px;
+  background: red;
 }
 
 footer {
