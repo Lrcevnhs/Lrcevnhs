@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   background: linear-gradient(to bottom, #98FB98, #008000);
-  color: white;
+  color: linear-gradient (to bottom, white, black);
   text-align: center;
   display: flex;
   flex-direction: column;
