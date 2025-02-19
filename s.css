@@ -1,65 +1,86 @@
 body {
   font-family: Arial, sans-serif;
-  text-align: center;
   margin: 0;
   padding: 0;
-  background: linear-gradient(to bottom, lightgreen, darkgreen);
+  background: linear-gradient(to bottom, #a8e6a3, #2d572c);
+  color: #333;
+}
+
+header {
+  background-color: #2d572c;
   color: white;
+  text-align: center;
+  padding: 20px 0;
 }
 
 h1 {
-  background: #004d00;
-  color: white;
-  padding: 20px;
+  font-size: 28px;
   margin: 0;
+}
+
+.lrc-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 5px 0 0;
 }
 
 main {
   padding: 20px;
+  text-align: center;
 }
 
 form {
   background: white;
   padding: 20px;
   max-width: 400px;
-  margin: auto;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  color: black;
+  margin: 20px auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 label {
   display: block;
-  margin: 10px 0 5px;
   font-weight: bold;
-  color: #003300;
+  margin: 10px 0 5px;
 }
 
 input, select {
   width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #006600;
-  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 button {
-  background: #006600;
-  color: white;
-  padding: 10px;
-  border: none;
   width: 100%;
+  padding: 10px;
   font-size: 16px;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  border-radius: 4px;
+  background-color: #2d572c;
+  color: white;
   font-weight: bold;
 }
 
 button:hover {
-  background: #004d00;
+  background-color: #1a3b1e;
 }
 
 .admin-btn {
-  background: #333;
+  background-color: #4a8c4a;
   margin-top: 10px;
+}
+
+.admin-btn:hover {
+  background-color: #376b37;
+}
+
+footer {
+  background: #1a3b1e;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
 }
