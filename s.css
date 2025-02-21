@@ -1,115 +1,107 @@
-/* General Styles */
-body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(to bottom, #4CAF50, #1B5E20);
-  color: white;
-  background-image: url('imgss.png'); /* School logo in background */
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-}
+document.addEventListener("DOMContentLoaded", function () {
+    const bookTitle = document.getElementById("book-title");
+    const studentForm = document.getElementById("student-form");
+    const adminForm = document.getElementById("admin-login-form");
+    const addBookForm = document.getElementById("add-book-form");
+    const borrowedBooksTable = document.querySelector("#borrowed-books-table tbody");
+    
+    // Load Books from Local Storage
+    function loadBooks() {
+        const books = JSON.parse(localStorage.getItem("books")) || [];
+        bookTitle.innerHTML = books.map(book => 
+            `<option value="${book.title}">${book.title} by ${book.author}</option>`).join("");
+        
+        displayBooksInAdmin();
+    }
 
-/* Header */
-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(to right, #388E3C, #1B5E20);
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
+    // Save a New Book (Admin)
+    if (addBookForm) {
+        addBookForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const bookName = document.getElementById("book-name").value;
+            const authorName = document.getElementById("author-name").value;
+            
+            if (!bookName || !authorName) {
+                alert("Please enter a valid book title and author!");
+                return;
+            }
 
-h1 {
-  font-size: 30px;
-  margin: 0;
-}
+            let books = JSON.parse(localStorage.getItem("books")) || [];
+            books.push({ title: bookName, author: authorName });
+            localStorage.setItem("books", JSON.stringify(books));
 
-/* Form Styles */
-form {
-  background: white;
-  padding: 25px;
-  max-width: 450px;
-  margin: 20px auto;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  color: black;
-}
+            alert("Book added successfully!");
+            addBookForm.reset();
+            loadBooks();
+        });
+    }
 
-label {
-  display: block;
-  margin: 10px 0 5px;
-  font-weight: bold;
-  text-align: left;
-}
+    // Display Books in Admin Panel
+    function displayBooksInAdmin() {
+        const adminBookList = document.getElementById("admin-book-list");
+        if (!adminBookList) return;
 
-input, select {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
+        adminBookList.innerHTML = "";
+        const books = JSON.parse(localStorage.getItem("books")) || [];
 
-button {
-  background: #2E7D32;
-  color: white;
-  padding: 12px;
-  border: none;
-  width: 100%;
-  font-size: 18px;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: background 0.3s ease-in-out;
-}
+        books.forEach((book, index) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${book.title}</td>
+                <td>${book.author}</td>
+                <td><button class="delete-book" data-index="${index}">Delete</button></td>
+            `;
+            adminBookList.appendChild(row);
+        });
 
-button:hover {
-  background: #66BB6A;
-}
+        // Add Delete Functionality for Books
+        document.querySelectorAll(".delete-book").forEach(button => {
+            button.addEventListener("click", function () {
+                let books = JSON.parse(localStorage.getItem("books")) || [];
+                const bookIndex = this.getAttribute("data-index");
+                books.splice(bookIndex, 1);
+                localStorage.setItem("books", JSON.stringify(books));
+                loadBooks();
+            });
+        });
+    }
 
-/* Admin Button */
-.admin-btn {
-  margin-top: 20px;
-  background: red;
-}
+    // Save Borrowed Book Data
+    function saveBorrowedBook(name, grade, section, book) {
+        let borrowedBooks = JSON.parse(localStorage.getItem("borrowedBooks")) || [];
+        borrowedBooks.push({
+            name,
+            grade,
+            section,
+            book,
+            date: new Date().toLocaleString("en-PH", { timeZone: "Asia/Manila" })
+        });
+        localStorage.setItem("borrowedBooks", JSON.stringify(borrowedBooks));
+        displayBorrowedBooks();
+    }
 
-.admin-btn:hover {
-  background: darkred;
-}
+    // Display Borrowed Books in Admin Panel
+    function displayBorrowedBooks() {
+        borrowedBooksTable.innerHTML = "";
+        let borrowedBooks = JSON.parse(localStorage.getItem("borrowedBooks")) || [];
 
-/* Tables */
-table {
-  width: 90%;
-  margin: 20px auto;
-  border-collapse: collapse;
-  background: white;
-  color: black;
-  border-radius: 8px;
-  overflow: hidden;
-}
+        borrowedBooks.forEach((record, index) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${record.name}</td>
+                <td>${record.grade}</td>
+                <td>${record.section}</td>
+                <td>${record.book}</td>
+                <td>${record.date}</td>
+                <td><button class="delete-record" data-index="${index}">Delete</button></td>
+            `;
+            borrowedBooksTable.appendChild(row);
+        });
 
-th, td {
-  padding: 12px;
-  border: 1px solid #ddd;
-  text-align: center;
-}
-
-th {
-  background: #388E3C;
-  color: white;
-}
-
-tr:nth-child(even) {
-  background: #f2f2f2;
-}
-
-/* Footer */
-footer {
-  margin-top: 20px;
-  background: #333;
-  color: white;
-  padding: 15px;
-  font-size: 14px;
-}
+        // Add Delete Functionality for Borrowed Books
+        document.querySelectorAll(".delete-record").forEach(button => {
+            button.addEventListener("click", function () {
+                let borrowedBooks = JSON.parse(localStorage.getItem("borrowedBooks")) || [];
+                const recordIndex = this.getAttribute("data-index");
+                borrowedBooks.splice(recordIndex, 1);
+                localStorage.setItem("borrowedBooks", JSON
