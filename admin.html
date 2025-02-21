@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="s.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+  <header>
+    <h1>Admin Panel - Library Management</h1>
+  </header>
+
+  <main>
+    <form id="admin-login-form">
+      <h2>Admin Login</h2>
+      <label for="admin-email">Email:</label>
+      <input type="email" id="admin-email" required>
+
+      <label for="admin-password">Password:</label>
+      <input type="password" id="admin-password" required>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <div id="admin-dashboard" style="display: none;">
+      <h2>Manage Books</h2>
+      <form id="add-book-form">
+        <label for="book-name">Book Name:</label>
+        <input type="text" id="book-name" required>
+
+        <label for="author-name">Author:</label>
+        <input type="text" id="author-name" required>
+
+        <button type="submit">Add Book</button>
+      </form>
+
+      <h3>Available Books:</h3>
+      <ul id="book-list"></ul>
+
+      <h2>Borrowed Books</h2>
+      <table id="borrowed-books-table">
+        <thead>
+          <tr>
+            <th>Student Name</th>
+            <th>Grade</th>
+            <th>Section</th>
+            <th>Book Title</th>
+            <th>Author</th>
+            <th>Date Borrowed</th>
+            <th>Return Status</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <button id="download-pdf">Download Student Data</button>
+      <p id="deletion-warning"></p>
+    </div>
+  </main>
+
+  <footer>
+    <button onclick="location.href='index.html'">Back to Main Page</button>
+  </footer>
+
+</body>
+</html>
