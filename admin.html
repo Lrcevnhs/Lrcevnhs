@@ -7,24 +7,21 @@
     <link rel="stylesheet" href="s.css">
 </head>
 <body>
-    <h1>Students Data</h1>
-    <table id="studentsTable">
-        <thead>
+    <div class="container">
+        <h1>Students Data</h1>
+        <table id="studentTable">
             <tr>
                 <th>Name</th>
                 <th>Grade & Section</th>
-                <th>Book Borrowed</th>
+                <th>Book</th>
                 <th>Time Borrowed</th>
                 <th>Return Date</th>
-                <th>Status</th>
                 <th>Action</th>
             </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-    <p id="timer"></p>
-    <button onclick="location.href='index.html'">Back to Main Page</button>
-    <button onclick="downloadPDF()">Download Data</button>
+        </table>
+        <button id="downloadPDF">Download Spreadsheet</button>
+        <button onclick="window.location.href='index.html'">Back to Main Page</button>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
