@@ -1,49 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Library Management System</title>
-  <link rel="stylesheet" href="s.css">
-  <script defer src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to LRC</title>
+    <link rel="stylesheet" href="s.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
+    <header>
+        <h1>Welcome To LRC</h1>
+    </header>
 
-  <header>
-    <h1>Updating soon, please wait. </h1>
-  </header>
+    <main>
+        <img src="imgss.png" alt="School Logo" class="background-logo">
 
-  <main>
-    <h2>Please wait for a while. </h2>
-    <form id="student-form">
-      <label for="student-name">Full Name (Last, First, Middle):</label>
-      <input type="text" id="student-name" required>
+        <button onclick="location.href='admin.html'">LRC History</button>
+        <button onclick="location.href='about.html'">About</button>
+    </main>
 
-      <label for="student-grade">Grade Level:</label>
-      <select id="student-grade" required>
-        <option value="" disabled selected>Select Grade</option>
-        <option value="7">Grade 7</option>
-        <option value="8">Grade 8</option>
-        <option value="9">Grade 9</option>
-        <option value="10">Grade 10</option>
-      </select>
-
-      <label for="student-section">Section:</label>
-      <input type="text" id="student-section" placeholder="Enter Your Section" required>
-
-      <label for="book-title">Select a Book:</label>
-      <select id="book-title"></select>
-
-      <button type="submit">Borrow Book</button>
-    </form>
-
-    <button class="admin-btn" onclick="location.href='admin.html'">Admin Login</button>
-  </main>
-
-  <footer>
-    <button onclick="location.href='about.html'">About</button>
-  </footer>
-
+    <footer>
+        <p>Library Resource Center</p>
+    </footer>
 </body>
 </html>
-
