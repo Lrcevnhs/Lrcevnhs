@@ -1,66 +1,36 @@
 body {
     font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, lightgreen, green, darkgreen);
     text-align: center;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(to bottom, #98FB98, #006400);
 }
 
-header {
-    background: #006400;
-    padding: 20px;
-    color: white;
-    font-size: 24px;
-}
-
-h1 {
-    text-align: center;
-    padding: 10px;
-    background: lightgreen;
-    display: inline-block;
-}
-
-form {
-    background: white;
-    padding: 20px;
-    max-width: 450px;
-    margin: auto;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-}
-
-label {
-    display: block;
-    font-weight: bold;
-}
-
-input, select, button {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
+.container {
+    margin-top: 50px;
 }
 
 button {
-    background: darkgreen;
-    color: white;
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: lightgreen;
     border: none;
     cursor: pointer;
+    font-size: 16px;
 }
 
-button:hover {
-    background: green;
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
 }
 
-.background-logo {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    width: 100px;
-    opacity: 0.5;
-}
-
-footer {
-    background: #333;
-    color: white;
+th, td {
     padding: 10px;
+    border: 1px solid black;
+}
+
+h1 {
+    background-color: lightgreen;
+    padding: 10px;
+    display: inline-block;
 }
