@@ -1,79 +1,70 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const bookTitleSelect = document.getElementById("book-title");
-    const addBookForm = document.getElementById("add-book-form");
-    const borrowedBooksTable = document.getElementById("borrowed-books-table").querySelector("tbody");
-    const countdownTimer = document.getElementById("countdown-timer");
+    loadBooks();
+    loadStudents();
+});
 
-    function loadBooks() {
-        const books = JSON.parse(localStorage.getItem("books")) || [];
-        bookTitleSelect.innerHTML = books.map(book => `<option value="${book.title}">${book.title} - ${book.author}</option>`).join("");
+function loadBooks() {
+    let books = JSON.parse(localStorage.getItem("books")) || [];
+    let bookList = document.getElementById("bookList");
+    if (bookList) {
+        bookList.innerHTML = "";
+        books.forEach((book, index) => {
+            let li = document.createElement("li");
+            li.textContent = `${book.title} by ${book.author}`;
+            let delBtn = document.createElement("button");
+            delBtn.textContent = "Delete";
+            delBtn.onclick = function () {
+                books.splice(index, 1);
+                localStorage.setItem("books", JSON.stringify(books));
+                loadBooks();
+            };
+            li.appendChild(delBtn);
+            bookList.appendChild(li);
+        });
     }
+}
 
-    function saveBorrowedBook(name, grade, section, bookTitle, bookAuthor) {
-        let borrowedBooks = JSON.parse(localStorage.getItem("borrowedBooks")) || [];
-        borrowedBooks.push({ name, grade, section, bookTitle, bookAuthor, date: new Date().toLocaleString("en-PH") });
-        localStorage.setItem("borrowedBooks", JSON.stringify(borrowedBooks));
-    }
+document.getElementById("addBookForm")?.addEventListener("submit", function (e) {
+    e.preventDefault();
+    let title = document.getElementById("bookTitle").value;
+    let author = document.getElementById("bookAuthor").value;
+    let books = JSON.parse(localStorage.getItem("books")) || [];
+    books.push({ title, author });
+    localStorage.setItem("books", JSON.stringify(books));
+    loadBooks();
+});
 
-    function displayBorrowedBooks() {
-        borrowedBooksTable.innerHTML = "";
-        let borrowedBooks = JSON.parse(localStorage.getItem("borrowedBooks")) || [];
-
-        borrowedBooks.forEach((book, index) => {
-            let row = borrowedBooksTable.insertRow();
+function loadStudents() {
+    let students = JSON.parse(localStorage.getItem("students")) || [];
+    let tableBody = document.querySelector("#studentsTable tbody");
+    if (tableBody) {
+        tableBody.innerHTML = "";
+        students.forEach((student, index) => {
+            let row = tableBody.insertRow();
             row.innerHTML = `
-                <td>${book.name}</td>
-                <td>${book.grade}</td>
-                <td>${book.section}</td>
-                <td>${book.bookTitle}</td>
-                <td>${book.bookAuthor}</td>
-                <td>${book.date}</td>
-                <td><button onclick="markReturned(${index})">Mark as Returned</button></td>
+                <td>${student.name}</td>
+                <td>${student.grade} - ${student.section}</td>
+                <td>${student.book}</td>
+                <td>${student.borrowTime}</td>
+                <td>${student.returnTime || "Not returned"}</td>
+                <td>${student.status}</td>
+                <td><button onclick="deleteStudent(${index})">Delete</button></td>
             `;
         });
     }
+}
 
-    function markReturned(index) {
-        let borrowedBooks = JSON.parse(localStorage.getItem("borrowedBooks")) || [];
-        borrowedBooks.splice(index, 1);
-        localStorage.setItem("borrowedBooks", JSON.stringify(borrowedBooks));
-        displayBorrowedBooks();
-    }
+function deleteStudent(index) {
+    let students = JSON.parse(localStorage.getItem("students")) || [];
+    students.splice(index, 1);
+    localStorage.setItem("students", JSON.stringify(students));
+    loadStudents();
+}
 
-    function autoDeleteData() {
-        let borrowedBooks = JSON.parse(localStorage.getItem("borrowedBooks")) || [];
-        let now = new Date().getTime();
-        borrowedBooks = borrowedBooks.filter(book => {
-            let bookTime = new Date(book.date).getTime();
-            return now - bookTime < 7 * 24 * 60 * 60 * 1000;
-        });
+function downloadPDF() {
+    alert("PDF Downloading...");
+}
 
-        localStorage.setItem("borrowedBooks", JSON.stringify(borrowedBooks));
-        displayBorrowedBooks();
-    }
-
-    function updateTimer() {
-        let borrowedBooks = JSON.parse(localStorage.getItem("borrowedBooks")) || [];
-        if (borrowedBooks.length === 0) {
-            countdownTimer.textContent = "No data to delete.";
-            return;
-        }
-
-        let oldestBook = new Date(borrowedBooks[0].date).getTime();
-        let expiryTime = oldestBook + 7 * 24 * 60 * 60 * 1000;
-        let remainingTime = expiryTime - new Date().getTime();
-
-        if (remainingTime <= 0) {
-            autoDeleteData();
-            return;
-        }
-
-        let hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        let minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
-        countdownTimer.textContent = `Data will be deleted in ${hours} hours and ${minutes} minutes`;
-    }
-
-    setInterval(updateTimer, 60000);
-    loadBooks();
-    displayBorrowedBooks();
-});
+function returnBook() {
+    alert("Return feature coming soon...");
+}
