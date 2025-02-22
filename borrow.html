@@ -3,27 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Borrow/Return Books</title>
+    <title>Borrow / Return Book</title>
     <link rel="stylesheet" href="s.css">
 </head>
 <body>
-    <h1>Borrow/Return Books</h1>
-    <form id="borrowForm">
-        <input type="text" id="fullName" placeholder="Full Name (Last, First, Middle)" required>
-        <select id="grade" required>
-            <option value="" disabled selected>Grade</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-        </select>
-        <input type="text" id="section" placeholder="Section" required>
-        <input type="text" id="searchBook" placeholder="Search Book">
-        <select id="bookList"></select>
-        <button type="submit">Borrow</button>
-        <button type="button" onclick="returnBook()">Return</button>
-    </form>
-    <button onclick="location.href='index.html'">Back to Main Page</button>
+    <div class="container">
+        <h1>Borrow / Return Book</h1>
+        <form id="borrowForm">
+            <input type="text" id="lname" placeholder="Last Name" required>
+            <input type="text" id="fname" placeholder="First Name" required>
+            <input type="text" id="mname" placeholder="Middle Name" required>
+            <select id="grade">
+                <option value="7">Grade 7</option>
+                <option value="8">Grade 8</option>
+                <option value="9">Grade 9</option>
+                <option value="10">Grade 10</option>
+            </select>
+            <input type="text" id="section" placeholder="Section" required>
+            <input type="text" id="searchBook" placeholder="Search Book">
+            <div id="bookList"></div>
+            <button type="submit">Submit</button>
+        </form>
+        <button onclick="window.location.href='index.html'">Back to Main Page</button>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
