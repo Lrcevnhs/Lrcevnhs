@@ -5,45 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LRC History</title>
     <link rel="stylesheet" href="s.css">
-    <script defer src="script.js"></script>
 </head>
 <body>
-    <header>
-        <h1>LRC History</h1>
-    </header>
-
-    <main>
-        <img src="imgss.png" alt="School Logo" class="background-logo">
-
-        <h2>Manage Books</h2>
-        <form id="add-book-form">
-            <label for="book-name">Book Title:</label>
-            <input type="text" id="book-name" required>
-
-            <label for="author-name">Author:</label>
-            <input type="text" id="author-name" required>
-
-            <button type="submit">Add Book</button>
-        </form>
-
-        <h2>Borrowed Books</h2>
-        <table id="borrowed-books-table">
-            <thead>
-                <tr>
-                    <th>Student Name</th>
-                    <th>Grade</th>
-                    <th>Section</th>
-                    <th>Book Title</th>
-                    <th>Author</th>
-                    <th>Date Borrowed</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-
-        <h3>Data will be deleted in: <span id="countdown-timer"></span></h3>
-        <button onclick="location.href='index.html'">Back to Main Page</button>
-    </main>
+    <h1>Students Data</h1>
+    <table id="studentsTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Grade & Section</th>
+                <th>Book Borrowed</th>
+                <th>Time Borrowed</th>
+                <th>Return Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <p id="timer"></p>
+    <button onclick="location.href='index.html'">Back to Main Page</button>
+    <button onclick="downloadPDF()">Download Data</button>
+    <script src="script.js"></script>
 </body>
 </html>
