@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Books</title>
+    <title>Manage Books</title>
     <link rel="stylesheet" href="s.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>Add Books</h1>
-    <form id="addBookForm">
-        <input type="text" id="bookTitle" placeholder="Book Title" required>
-        <input type="text" id="bookAuthor" placeholder="Author" required>
-        <button type="submit">Add Book</button>
-    </form>
+    <h1>Manage Books</h1>
+    <input type="text" id="bookTitle" placeholder="Book Title">
+    <input type="text" id="bookAuthor" placeholder="Author">
+    <button onclick="addBook()">Add Book</button>
+    <h2>Available Books</h2>
     <ul id="bookList"></ul>
     <button onclick="location.href='index.html'">Back to Main Page</button>
-    <script src="script.js"></script>
 </body>
 </html>
