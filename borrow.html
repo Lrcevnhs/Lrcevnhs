@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrow/Return Books</title>
+    <link rel="stylesheet" href="s.css">
+</head>
+<body>
+    <h1>Borrow/Return Books</h1>
+    <form id="borrowForm">
+        <input type="text" id="fullName" placeholder="Full Name (Last, First, Middle)" required>
+        <select id="grade" required>
+            <option value="" disabled selected>Grade</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+        <input type="text" id="section" placeholder="Section" required>
+        <input type="text" id="searchBook" placeholder="Search Book">
+        <select id="bookList"></select>
+        <button type="submit">Borrow</button>
+        <button type="button" onclick="returnBook()">Return</button>
+    </form>
+    <button onclick="location.href='index.html'">Back to Main Page</button>
+    <script src="script.js"></script>
+</body>
+</html>
