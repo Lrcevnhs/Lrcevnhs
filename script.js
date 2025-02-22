@@ -1,67 +1,59 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const studentTable = document.getElementById("studentTable");
+// Local Storage Handling
+function saveToLocalStorage(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+}
+function getFromLocalStorage(key) {
+    return JSON.parse(localStorage.getItem(key)) || [];
+}
 
-    if (studentTable) {
-        loadStudentData();
+// Manage Books
+function addBook() {
+    let title = document.getElementById("bookTitle").value.trim();
+    let author = document.getElementById("bookAuthor").value.trim();
+    if (title && author) {
+        let books = getFromLocalStorage("books");
+        books.push({ title, author });
+        saveToLocalStorage("books", books);
+        alert("Book Added!");
+        displayBooks();
     }
+}
+function displayBooks() {
+    let books = getFromLocalStorage("books");
+    let bookList = document.getElementById("bookList");
+    bookList.innerHTML = books.map((b, index) => `<li>${b.title} - ${b.author} <button onclick="deleteBook(${index})">Delete</button></li>`).join('');
+}
+function deleteBook(index) {
+    let books = getFromLocalStorage("books");
+    books.splice(index, 1);
+    saveToLocalStorage("books", books);
+    displayBooks();
+}
 
-    const borrowForm = document.getElementById("borrowForm");
-    if (borrowForm) {
-        borrowForm.addEventListener("submit", function (event) {
-            event.preventDefault();
-            saveStudentData();
-        });
+// Borrowing & Returning
+function checkStudent() {
+    let student = document.getElementById("studentName").value.trim();
+    if (student) {
+        document.getElementById("actionSection").style.display = "block";
     }
-
-    const downloadBtn = document.getElementById("downloadPDF");
-    if (downloadBtn) {
-        downloadBtn.addEventListener("click", function () {
-            generatePDF();
-        });
-    }
-});
-
-function saveStudentData() {
-    let lname = document.getElementById("lname").value;
-    let fname = document.getElementById("fname").value;
-    let mname = document.getElementById("mname").value;
-    let grade = document.getElementById("grade").value;
-    let section = document.getElementById("section").value;
-    let book = document.getElementById("searchBook").value;
-    let borrowedTime = new Date().toLocaleString("en-PH");
-
-    let studentData = JSON.parse(localStorage.getItem("students")) || [];
-    studentData.push({ lname, fname, mname, grade, section, book, borrowedTime, returned: false });
-
-    localStorage.setItem("students", JSON.stringify(studentData));
+}
+function showBorrow() {
+    document.getElementById("borrowSection").style.display = "block";
+}
+function showReturn() {
+    document.getElementById("returnSection").style.display = "block";
+}
+function borrowBook() {
     alert("Book borrowed successfully!");
-    location.reload();
+}
+function returnBook() {
+    alert("Book returned successfully!");
 }
 
-function loadStudentData() {
-    let studentData = JSON.parse(localStorage.getItem("students")) || [];
-    let table = document.getElementById("studentTable");
-
-    studentData.forEach((student, index) => {
-        let row = table.insertRow();
-        row.innerHTML = `
-            <td>${student.lname}, ${student.fname} ${student.mname}</td>
-            <td>${student.grade}-${student.section}</td>
-            <td>${student.book}</td>
-            <td>${student.borrowedTime}</td>
-            <td>${student.returned ? student.returned : "Not Returned"}</td>
-            <td><button onclick="returnBook(${index})">Mark as Returned</button></td>
-        `;
-    });
-}
-
-function returnBook(index) {
-    let studentData = JSON.parse(localStorage.getItem("students"));
-    studentData[index].returned = new Date().toLocaleString("en-PH");
-    localStorage.setItem("students", JSON.stringify(studentData));
-    location.reload();
-}
-
-function generatePDF() {
-    alert("Spreadsheet Downloading...");
+// Timer for Auto-Delete
+function updateTimer() {
+    let timeLeft = 7 * 24 * 60 * 60;
+    setInterval(() => {
+        document.getElementById("timer").innerText = `Data will be deleted in ${timeLeft--} seconds.`;
+    }, 1000);
 }
