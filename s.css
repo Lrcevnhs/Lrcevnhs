@@ -5,32 +5,29 @@ body {
 }
 
 .container {
-    margin-top: 50px;
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
 }
 
 button {
     display: block;
     margin: 10px auto;
-    padding: 10px 20px;
-    background-color: lightgreen;
+    padding: 10px;
+    background: lightgreen;
     border: none;
-    cursor: pointer;
-    font-size: 16px;
+    border-radius: 5px;
 }
 
 table {
-    width: 80%;
-    margin: 20px auto;
+    width: 100%;
     border-collapse: collapse;
+    margin-top: 20px;
 }
 
 th, td {
-    padding: 10px;
     border: 1px solid black;
-}
-
-h1 {
-    background-color: lightgreen;
     padding: 10px;
-    display: inline-block;
 }
